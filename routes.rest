@@ -1,0 +1,21 @@
+// Local Host
+###
+GET http://localhost:8080/users/
+
+###
+GET http://localhost:8080/users/6830e82ded56c2256c29b108
+
+###
+POST http://localhost:8080/users/
+Content-Type: application/json
+
+{
+    "username": "workingTristan",
+    "email": "tristan@example.com",
+    "avatarUrl": "https://example.com/avatar/tristan.jpg",
+    "fitnessGoals": "Get swole",
+    "friends": [],
+    "routines": [],
+    "joinedAt": "2025-3-01T10:00:00Z",
+    "bio": "Just a software engineer trying to get fit."
+}
