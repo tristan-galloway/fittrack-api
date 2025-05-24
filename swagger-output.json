@@ -1,0 +1,522 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "TrackFit API",
+    "description": "API documentation for TrackFit application.",
+    "version": "1.0.0"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users/": {
+      "get": {
+        "description": "Get all contacts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of contacts",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "fit_jane"
+                  },
+                  "email": {
+                    "type": "string",
+                    "example": "jane@example.com"
+                  },
+                  "avatarUrl": {
+                    "type": "string",
+                    "example": "https://example.com/avatar/jane.jpg"
+                  },
+                  "fitnessGoals": {
+                    "type": "string",
+                    "example": "Build strength and endurance"
+                  },
+                  "friends": {
+                    "type": "array",
+                    "example": [],
+                    "items": {}
+                  },
+                  "routines": {
+                    "type": "array",
+                    "example": [],
+                    "items": {}
+                  },
+                  "joinedAt": {
+                    "type": "string",
+                    "example": "2024-10-01T10:00:00Z"
+                  },
+                  "bio": {
+                    "type": "string",
+                    "example": "Lifelong runner and HIIT fan"
+                  }
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "Create a new contact",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Contact data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "fit_jane"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jane@example.com"
+                },
+                "avatarUrl": {
+                  "type": "string",
+                  "example": "https://example.com/avatar/jane.jpg"
+                },
+                "fitnessGoals": {
+                  "type": "string",
+                  "example": "Build strength and endurance"
+                },
+                "friends": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "routines": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "joinedAt": {
+                  "type": "string",
+                  "example": "2024-10-01T10:00:00Z"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "Lifelong runner and HIIT fan"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Contact created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "acknowledged": {
+                  "type": "boolean",
+                  "example": true
+                },
+                "insertedId": {
+                  "type": "string",
+                  "example": "6830e82ded56c2256c29b108"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "Missing a required field."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "description": "Get a single User by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User ID",
+            "example": "6830e82ded56c2256c29b108"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "fit_jane"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jane@example.com"
+                },
+                "avatarUrl": {
+                  "type": "string",
+                  "example": "https://example.com/avatar/jane.jpg"
+                },
+                "fitnessGoals": {
+                  "type": "string",
+                  "example": "Build strength and endurance"
+                },
+                "friends": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "routines": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "joinedAt": {
+                  "type": "string",
+                  "example": "2024-10-01T10:00:00Z"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "Lifelong runner and HIIT fan"
+                }
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "put": {
+        "description": "Update a User by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User ID",
+            "example": "6830e82ded56c2256c29b108"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated User data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string",
+                  "example": "fit_jane"
+                },
+                "email": {
+                  "type": "string",
+                  "example": "jane@example.com"
+                },
+                "avatarUrl": {
+                  "type": "string",
+                  "example": "https://example.com/avatar/jane.jpg"
+                },
+                "fitnessGoals": {
+                  "type": "string",
+                  "example": "Build strength and endurance"
+                },
+                "friends": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "routines": {
+                  "type": "array",
+                  "example": [],
+                  "items": {}
+                },
+                "joinedAt": {
+                  "type": "string",
+                  "example": "2024-10-01T10:00:00Z"
+                },
+                "bio": {
+                  "type": "string",
+                  "example": "Lifelong runner and HIIT fan"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "User updated"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "Delete a User by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "User ID",
+            "example": "6830e82ded56c2256c29b108"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "204": {
+            "description": "User deleted"
+          },
+          "404": {
+            "description": "User not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/workouts/": {
+      "get": {
+        "description": "Get all workouts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "List of workouts",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
+                  "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
+                  "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                  "exercises": {
+                    "type": "array",
+                    "items": {
+                      "type": "object",
+                      "properties": {
+                        "name": { "type": "string", "example": "Push-ups" },
+                        "sets": { "type": "integer", "example": 3 },
+                        "reps": { "type": "integer", "example": 12 },
+                        "weight": { "type": "number", "example": 0 }
+                      }
+                    }
+                  },
+                  "duration": { "type": "integer", "example": 40 },
+                  "intensity": { "type": "string", "example": "medium" },
+                  "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+                }
+              }
+            }
+          },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "post": {
+        "description": "Create a new workout",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Workout data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
+                "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
+                "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                "exercises": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string", "example": "Push-ups" },
+                      "sets": { "type": "integer", "example": 3 },
+                      "reps": { "type": "integer", "example": 12 },
+                      "weight": { "type": "number", "example": 0 }
+                    }
+                  }
+                },
+                "duration": { "type": "integer", "example": 40 },
+                "intensity": { "type": "string", "example": "medium" },
+                "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Workout created",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "acknowledged": { "type": "boolean", "example": true },
+                "insertedId": { "type": "string", "example": "60c72b2f9b1e8a001c8e4f3b" }
+              }
+            }
+          },
+          "400": { "description": "Missing a required field." },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    },
+    "/workouts/{id}": {
+      "get": {
+        "description": "Get a single Workout by ID",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Workout ID",
+            "example": "60c72b2f9b1e8a001c8e4f3b"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Workout found",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
+                "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
+                "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                "exercises": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string", "example": "Push-ups" },
+                      "sets": { "type": "integer", "example": 3 },
+                      "reps": { "type": "integer", "example": 12 },
+                      "weight": { "type": "number", "example": 0 }
+                    }
+                  },
+                  "duration": { "type": "integer", "example": 40 },
+                  "intensity": { "type": "string", "example": "medium" },
+                  "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+                }
+              }
+            }
+          },
+          "404": { "description": "Workout not found" }
+        }
+      },
+      "put": {
+        "description": "Update a Workout by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Workout ID",
+            "example": "60c72b2f9b1e8a001c8e4f3b"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated Workout data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
+                "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
+                "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                "exercises": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "name": { "type": "string", "example": "Push-ups" },
+                      "sets": { "type": "integer", "example": 3 },
+                      "reps": { "type": "integer", "example": 12 },
+                      "weight": { "type": "number", "example": 0 }
+                    }
+                  },
+                  "duration": { "type": "integer", "example": 40 },
+                  "intensity": { "type": "string", "example": "medium" },
+                  "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "204": { "description": "Workout updated" },
+          "404": { "description": "Workout not found" },
+          "500": { "description": "Internal Server Error" }
+        }
+      },
+      "delete": {
+        "description": "Delete a Workout by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Workout ID",
+            "example": "60c72b2f9b1e8a001c8e4f3b"
+          }
+        ],
+        "responses": {
+          "200": { "description": "OK" },
+          "204": { "description": "Workout deleted" },
+          "404": { "description": "Workout not found" },
+          "500": { "description": "Internal Server Error" }
+        }
+      }
+    }
+  }
+}
