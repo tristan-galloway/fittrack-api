@@ -1,12 +1,99 @@
+// ===== USERS =====
+
 // Local Host
 ###
 GET http://localhost:8080/users/
 
 ###
-GET http://localhost:8080/users/6830f17cd2e7aa682b15f106
+GET http://localhost:8080/users/6832232e55605f8d21c85f54
 
 ###
 POST http://localhost:8080/users/
+Content-Type: application/json
+
+{
+    "username": "AcidicRabbit",
+    "email": "Rabbit@example.com",
+    "avatarUrl": "https://example.com/avatar/tristan.jpg",
+    "fitnessGoals": "Get swole",
+    "friends": [],
+    "routines": [],
+    "joinedAt": "2025-03-01T10:00:00Z",
+    "bio": "Just a software engineer trying to get fit."
+}
+
+###
+PUT http://localhost:8080/users/6830f17cd2e7aa682b15f106
+Content-Type: application/json
+
+{
+    "username": "updatedTristan",
+    "email": "tristan@example.com",
+    "avatarUrl": "https://example.com/avatar/tristan.jpg",
+    "fitnessGoals": "Stay healthy",
+    "friends": [],
+    "routines": [],
+    "joinedAt": "2025-03-01T10:00:00Z",
+    "bio": "Updated bio."
+}
+
+###
+DELETE http://localhost:8080/users/6830f17cd2e7aa682b15f106
+
+// ===== WORKOUTS =====
+
+###
+GET http://localhost:8080/workouts/
+
+###
+GET http://localhost:8080/workouts/60c72b2f9b1e8a001c8e4f3b
+
+###
+POST http://localhost:8080/workouts/
+Content-Type: application/json
+
+{
+    "userId": "6830e84aed56c2256c29b10a",
+    "date": "2025-05-21T07:30:00Z",
+    "title": "Morning Full Body Circuit",
+    "exercises": [
+        { "name": "Push-ups", "sets": 3, "reps": 12, "weight": 0 },
+        { "name": "Squats", "sets": 3, "reps": 15, "weight": 0 }
+    ],
+    "duration": 40,
+    "intensity": "medium",
+    "notes": "Felt energized today, good start to the week!"
+}
+
+###
+PUT http://localhost:8080/workouts/60c72b2f9b1e8a001c8e4f3b
+Content-Type: application/json
+
+{
+    "userId": "6830e84aed56c2256c29b10a",
+    "date": "2025-05-22T07:30:00Z",
+    "title": "Updated Workout Title",
+    "exercises": [
+        { "name": "Pull-ups", "sets": 4, "reps": 10, "weight": 0 }
+    ],
+    "duration": 45,
+    "intensity": "high",
+    "notes": "Updated workout notes."
+}
+
+###
+DELETE http://localhost:8080/workouts/60c72b2f9b1e8a001c8e4f3b
+
+// ===== PRODUCTION TESTS =====
+
+###
+GET https://fittrack-e3u1.onrender.com/users/
+
+###
+GET https://fittrack-e3u1.onrender.com/users/6830f17cd2e7aa682b15f106
+
+###
+POST https://fittrack-e3u1.onrender.com/users/
 Content-Type: application/json
 
 {
@@ -16,6 +103,66 @@ Content-Type: application/json
     "fitnessGoals": "Get swole",
     "friends": [],
     "routines": [],
-    "joinedAt": "2025-3-01T10:00:00Z",
+    "joinedAt": "2025-03-01T10:00:00Z",
     "bio": "Just a software engineer trying to get fit."
 }
+
+###
+PUT https://fittrack-e3u1.onrender.com/users/6830f17cd2e7aa682b15f106
+Content-Type: application/json
+
+{
+    "username": "updatedTristan",
+    "email": "tristan@example.com",
+    "avatarUrl": "https://example.com/avatar/tristan.jpg",
+    "fitnessGoals": "Stay healthy",
+    "friends": [],
+    "routines": [],
+    "joinedAt": "2025-03-01T10:00:00Z",
+    "bio": "Updated bio."
+}
+
+###
+DELETE https://fittrack-e3u1.onrender.com/users/6830f17cd2e7aa682b15f106
+
+###
+GET https://fittrack-e3u1.onrender.com/workouts/
+
+###
+GET https://fittrack-e3u1.onrender.com/workouts/60c72b2f9b1e8a001c8e4f3b
+
+###
+POST https://fittrack-e3u1.onrender.com/workouts/
+Content-Type: application/json
+
+{
+    "userId": "6830e84aed56c2256c29b10a",
+    "date": "2025-05-21T07:30:00Z",
+    "title": "Morning Full Body Circuit",
+    "exercises": [
+        { "name": "Push-ups", "sets": 3, "reps": 12, "weight": 0 },
+        { "name": "Squats", "sets": 3, "reps": 15, "weight": 0 }
+    ],
+    "duration": 40,
+    "intensity": "medium",
+    "notes": "Felt energized today, good start to the week!"
+}
+
+###
+PUT https://fittrack-e3u1.onrender.com/workouts/60c72b2f9b1e8a001c8e4f3b
+Content-Type: application/json
+
+{
+    "userId": "6830e84aed56c2256c29b10a",
+    "date": "2025-05-22T07:30:00Z",
+    "title": "Updated Workout Title",
+    "exercises": [
+        { "name": "Pull-ups", "sets": 4, "reps": 10, "weight": 0 }
+    ],
+    "duration": 45,
+    "intensity": "high",
+    "notes": "Updated workout notes."
+}
+
+###
+DELETE https://fittrack-e3u1.onrender.com/workouts/60c72b2f9b1e8a001c8e4f3b
