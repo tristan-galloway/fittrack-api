@@ -22,7 +22,9 @@ title, exercises[], duration, creatorId, date, intensityLevel, notes
 
 ## Example collections:
 
-### users
+### Users
+
+Schema
 ```json
 {
   _id: ObjectId,
@@ -37,7 +39,23 @@ title, exercises[], duration, creatorId, date, intensityLevel, notes
 }
 ```
 
-### workouts
+Example
+```json
+{
+  "_id": "60c72b2f9b1e8a001c8e4f3a",
+  "username": "fit_jane",
+  "email": "jane@example.com",
+  "avatarUrl": "https://example.com/avatar/jane.jpg",
+  "fitnessGoals": "Build strength and endurance",
+  "friends": [],
+  "routines": [],
+  "joinedAt": "2024-10-01T10:00:00Z",
+  "bio": "Lifelong runner and HIIT fan"
+}
+```
+
+### Workouts
+Schema
 ```json
 {
   _id: ObjectId,
@@ -55,5 +73,23 @@ title, exercises[], duration, creatorId, date, intensityLevel, notes
   duration: Number, // in minutes
   intensity: { type: String, enum: ['low', 'medium', 'high'] },
   notes: String
+}
+```
+
+Example
+```json
+{
+  "_id": "60c72b2f9b1e8a001c8e4f3b",
+  "userId": "6830e84aed56c2256c29b10a",
+  "date": "2025-05-21T07:30:00Z",
+  "title": "Morning Full Body Circuit",
+  "exercises": [
+    { "name": "Push-ups", "sets": 3, "reps": 12, "weight": 0 },
+    { "name": "Squats", "sets": 3, "reps": 15, "weight": 0 },
+    { "name": "Burpees", "sets": 3, "reps": 10, "weight": 0 }
+  ],
+  "duration": 40,
+  "intensity": "medium",
+  "notes": "Felt energized today, good start to the week!"
 }
 ```
