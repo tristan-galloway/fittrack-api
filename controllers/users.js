@@ -56,4 +56,41 @@ const createUser = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getSingle, createUser };
+const updateUser = async (req, res) => {
+  const userId = new ObjectId(req.params.id);
+  const updatedUser = {
+    username: req.body.username,
+    email: req.body.email,
+    avatarUrl: req.body.avatarUrl,
+    fitnessGoals: req.body.fitnessGoals,
+    friends: req.body.friends || [],
+    routines: req.body.routines || [],
+    joinedAt: req.body.joinedAt,
+    bio: req.body.bio
+  };
+
+  try {
+    const result = await mongodb.getDb().db('fittrack').collection('users').updateOne(
+      { _id: userId },
+      { $set: updatedUser }
+    );
+    res.status(200).json(result);
+  } catch (err) {
+    res.status(500).json({ error: 'An error occurred while updating the user.' });
+  }
+}
+
+const deleteUser = async (req, res) => {
+  const userId = new ObjectId(req.params.id);
+  try {
+    const result = await mongodb.getDb().db('fittrack').collection('users').deleteOne({ _id: userId });
+    if (result.deletedCount === 0) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
+    res.status(200).json({ message: 'User deleted successfully.' });
+  } catch (err) {
+    res.status(500).json({ error: 'An error occurred while deleting the user.' });
+  }
+};
+
+module.exports = { getAll, getSingle, createUser, updateUser, deleteUser };
