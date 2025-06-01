@@ -13,12 +13,24 @@ const getAll = async (req, res) => {
 };
 
 const getSingle = async (req, res, next) => {
-  const userId = new ObjectId(req.params.id);
-  const result = await mongodb.getDb().db('fittrack').collection('users').find({ _id: userId });
-  result.toArray().then((lists) => {
+  let userId;
+  try {
+    userId = new ObjectId(req.params.id);
+  } catch (err) {
+    return res.status(400).json({ error: 'Invalid user ID format.' });
+  }
+
+  try {
+    const result = await mongodb.getDb().db('fittrack').collection('users').find({ _id: userId });
+    const lists = await result.toArray();
+    if (!lists[0]) {
+      return res.status(404).json({ error: 'User not found.' });
+    }
     res.setHeader('Content-Type', 'application/json');
     res.status(200).json(lists[0]);
-  });
+  } catch (err) {
+    res.status(500).json({ error: 'An error occurred while fetching the user.' });
+  }
 };
 
 const createUser = async (req, res) => {
@@ -70,11 +82,11 @@ const updateUser = async (req, res) => {
   };
 
   try {
-    const result = await mongodb.getDb().db('fittrack').collection('users').updateOne(
+    await mongodb.getDb().db('fittrack').collection('users').updateOne(
       { _id: userId },
       { $set: updatedUser }
     );
-    res.status(200).json(result);
+    res.status(204).send();
   } catch (err) {
     res.status(500).json({ error: 'An error occurred while updating the user.' });
   }

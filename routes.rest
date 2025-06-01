@@ -5,25 +5,10 @@
 GET http://localhost:8080/users/
 
 ###
-GET http://localhost:8080/users/6832232e55605f8d21c85f54
+GET http://localhost:8080/users/6830e82ded56c2256c29b109
 
 ###
 POST http://localhost:8080/users/
-Content-Type: application/json
-
-{
-    "username": "AcidicRabbit",
-    "email": "Rabbit@example.com",
-    "avatarUrl": "https://example.com/avatar/tristan.jpg",
-    "fitnessGoals": "Get swole",
-    "friends": [],
-    "routines": [],
-    "joinedAt": "2025-03-01T10:00:00Z",
-    "bio": "Just a software engineer trying to get fit."
-}
-
-###
-PUT http://localhost:8080/users/6830f17cd2e7aa682b15f106
 Content-Type: application/json
 
 {
@@ -38,7 +23,22 @@ Content-Type: application/json
 }
 
 ###
-DELETE http://localhost:8080/users/6830f17cd2e7aa682b15f106
+PUT http://localhost:8080/users/68323e1737d2c1f01c4fe5bd
+Content-Type: application/json
+
+{
+    "username": "video_demo4",
+    "email": "videodemo4@example.com",
+    "avatarUrl": "https://example.com/avatar/video_demo4.jpg",
+    "fitnessGoals": "Build strength and endurance",
+    "friends": [],
+    "routines": [],
+    "joinedAt": "2024-10-01T10:00:00Z",
+    "bio": "Lifelong runner and HIIT fan, testing PUT"
+}
+
+###
+DELETE http://localhost:8080/users/68323e1737d2c1f01c4fe5bd
 
 // ===== WORKOUTS =====
 
