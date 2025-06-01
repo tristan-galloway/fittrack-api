@@ -1,10 +1,13 @@
 const express = require('express');
-const mongodb = require('./data/connect');
+const connectDb = require('./data/connect');
 const bodyParser = require('body-parser');
 require('dotenv').config();
 
 const port = process.env.PORT || 8080;
 const app = express();
+
+// Connect to MongoDB
+connectDb();
 
 // Routes
 app
@@ -15,11 +18,6 @@ app
   })
   .use('/', require('./routes'));
 
-mongodb.initDb((err, mongodb) => {
-  if (err) {
-    console.log(err);
-  } else {
-    app.listen(port);
-    console.log(`Connected to DB and listening on ${port}`);
-  }
+app.listen(port, () => {
+  console.log(`Server is running on port ${port}`);
 });

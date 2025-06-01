@@ -23,22 +23,23 @@ Content-Type: application/json
 }
 
 ###
-PUT http://localhost:8080/users/68323e1737d2c1f01c4fe5bd
+PUT http://localhost:8080/users/683bb94d28dcc1547bb2a928
 Content-Type: application/json
 
 {
-    "username": "video_demo4",
-    "email": "videodemo4@example.com",
-    "avatarUrl": "https://example.com/avatar/video_demo4.jpg",
+    "username": "fit_jane3",
+    "email": "jane@example3.com",
+    "avatarUrl": "https://example.com/avatar/jane3.jpg",
     "fitnessGoals": "Build strength and endurance",
     "friends": [],
     "routines": [],
-    "joinedAt": "2024-10-01T10:00:00Z",
-    "bio": "Lifelong runner and HIIT fan, testing PUT"
+    "joinedAt": "2024-10-01T10:00:00.000Z",
+    "bio": "Lifelong runner and HIIT fan",
+    "__v": 0
 }
 
 ###
-DELETE http://localhost:8080/users/68323e1737d2c1f01c4fe5bd
+DELETE http://localhost:8080/users/683bb81928dcc1547bb2a922
 
 // ===== WORKOUTS =====
 
