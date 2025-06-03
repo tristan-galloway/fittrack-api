@@ -6,23 +6,23 @@ FitTrack is a RESTful API for users to:
 - Follow friends and share workouts
 - Authenticate via OAuth (Google, GitHub, etc.)
 
-## Tech Stack
-Backend: Node.js + Express
-Database: MongoDB
-Auth: TBD (Passport.js with Google OAuth 2.0)
-Validation: TBD (Joi or Mongoose validation)
-Error Handling: TBD (Centralized middleware)
+# Tech Stack
+- Backend: Node.js + Express
+- Database: MongoDB
+- Auth: TBD (Passport.js with Google OAuth 2.0)
+- Validation: TBD (Joi or Mongoose validation)
+- Error Handling: TBD (Centralized middleware)
 
-## Collections:
-### users (OAuth + 7+ fields)
+# Collections:
+## users
 email, username, fitnessGoals, routinesCreated[], friends[], joinedAt, bio
 
-### workouts
+## workouts
 title, exercises[], duration, creatorId, date, intensityLevel, notes
 
-## Example collections:
+# Example collections:
 
-### Users
+## Users
 
 Schema
 ```json
@@ -54,7 +54,7 @@ Example
 }
 ```
 
-### Workouts
+## Workouts
 Schema
 ```json
 {
