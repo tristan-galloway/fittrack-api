@@ -24,4 +24,29 @@ const getSingle = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getSingle };
+// Create a new workout
+const createWorkout = async (req, res) => {
+  // Validate required fields
+  const requiredFields = [
+    "userId",
+    "date",
+    "title",
+    "exercises",
+    "duration",
+    "intensity"
+  ];
+  for (const field of requiredFields) {
+    if (!req.body[field]) {
+      return res.status(400).json({ error: `Missing required field: ${field}` });
+    }
+  }
+  try {
+    const workout = new Workout(req.body);
+    const result = await workout.save();
+    res.status(201).json(result);
+  } catch (err) {
+    res.status(500).json({ error: 'An error occurred while creating the workout.' });
+  }
+};
+
+module.exports = { getAll, getSingle, createWorkout };
