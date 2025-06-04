@@ -127,4 +127,21 @@ router.put(
     workoutsController.updateWorkout
 );
 
+// DELETE a workout by ID
+router.delete(
+    '/:id',
+    /* #swagger.description = 'Delete a workout by ID'
+        #swagger.parameters['id'] = { 
+            description: 'Workout ID', 
+            type: 'string', 
+            example: '60c72b2f9b1e8a001c8e4f3b' 
+        }
+        #swagger.responses[200] = { description: 'Workout deleted successfully.' }
+        #swagger.responses[400] = { description: 'Invalid workout ID format.' }
+        #swagger.responses[404] = { description: 'Workout not found' }
+        #swagger.responses[500] = { description: 'Internal Server Error' }
+    */
+    workoutsController.deleteWorkout
+);
+
 module.exports = router;

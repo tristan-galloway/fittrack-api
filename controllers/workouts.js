@@ -63,4 +63,18 @@ const updateWorkout = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getSingle, createWorkout, updateWorkout };
+// Delete a workout by ID
+const deleteWorkout = async (req, res) => {
+  try {
+    const result = await Workout.findByIdAndDelete(req.params.id);
+    if (!result) return res.status(404).json({ error: 'Workout not found.' });
+    res.status(200).json({ message: 'Workout deleted successfully.' });
+  } catch (err) {
+    if (err.name === 'CastError') {
+      return res.status(400).json({ error: 'Invalid workout ID format.' });
+    }
+    res.status(500).json({ error: 'An error occurred while deleting the workout.' });
+  }
+};
+
+module.exports = { getAll, getSingle, createWorkout, updateWorkout, deleteWorkout };
