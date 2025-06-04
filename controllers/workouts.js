@@ -49,4 +49,18 @@ const createWorkout = async (req, res) => {
   }
 };
 
-module.exports = { getAll, getSingle, createWorkout };
+// Update a workout by ID
+const updateWorkout = async (req, res) => {
+  try {
+    const result = await Workout.findByIdAndUpdate(req.params.id, req.body, { new: true, runValidators: true });
+    if (!result) return res.status(404).json({ error: 'Workout not found.' });
+    res.status(204).send();
+  } catch (err) {
+    if (err.name === 'CastError') {
+      return res.status(400).json({ error: 'Invalid workout ID format.' });
+    }
+    res.status(500).json({ error: 'An error occurred while updating the workout.' });
+  }
+};
+
+module.exports = { getAll, getSingle, createWorkout, updateWorkout };

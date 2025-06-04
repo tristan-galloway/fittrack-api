@@ -502,6 +502,38 @@
           "404": { "description": "Workout not found" },
           "500": { "description": "Internal Server Error" }
         }
+      },
+      "put": {
+        "description": "Update a workout by ID",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string",
+            "description": "Workout ID",
+            "example": "60c72b2f9b1e8a001c8e4f3b"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "description": "Updated workout data",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "title": { "type": "string", "example": "Updated Workout Title" },
+                "duration": { "type": "number", "example": 45 }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "204": { "description": "Workout updated (no content)" },
+          "400": { "description": "Invalid workout ID format." },
+          "404": { "description": "Workout not found" },
+          "500": { "description": "Internal Server Error" }
+        }
       }
     }
   }

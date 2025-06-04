@@ -100,4 +100,31 @@ router.post(
     workoutsController.createWorkout
 );
 
+// PUT update a workout by ID
+router.put(
+    '/:id',
+    /* #swagger.description = 'Update a workout by ID'
+        #swagger.parameters['id'] = { 
+            description: 'Workout ID', 
+            type: 'string', 
+            example: '60c72b2f9b1e8a001c8e4f3b' 
+        }
+        #swagger.parameters['body'] = {
+            in: 'body',
+            description: 'Updated workout data',
+            required: true,
+            schema: {
+                "title": "Updated Workout Title",
+                "duration": 45
+                // ...other updatable fields...
+            }
+        }
+        #swagger.responses[204] = { description: 'Workout updated (no content)' }
+        #swagger.responses[400] = { description: 'Invalid workout ID format.' }
+        #swagger.responses[404] = { description: 'Workout not found' }
+        #swagger.responses[500] = { description: 'Internal Server Error' }
+    */
+    workoutsController.updateWorkout
+);
+
 module.exports = router;
