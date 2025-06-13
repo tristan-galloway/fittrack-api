@@ -1,9 +1,11 @@
 const express = require('express');
 const router = express.Router();
 const usersController = require('../controllers/users');
+const ensureAuthenticated = require('../middleware/auth');
 
 router.get(
     '/',
+    ensureAuthenticated,
     /* #swagger.description = 'Get all users'
      #swagger.responses[200] = {
        description: 'List of users',
@@ -17,7 +19,7 @@ router.get(
                 "friends": [],
                 "routines": [],
                 "joinedAt": "2024-10-01T10:00:00Z",
-                "bio": "Lifelong runner and HIIT fan"
+                "bio": "Life                    long runner and HIIT fan"
             }
        ]
     }
@@ -27,7 +29,8 @@ router.get(
 );
 
 
-router.get('/:id',
+router.get(
+    '/:id',
     /* #swagger.description = 'Get a single User by ID'
         #swagger.parameters['id'] = { 
             description: 'User ID', 
