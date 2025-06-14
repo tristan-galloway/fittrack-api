@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const workoutsController = require('../controllers/workouts');
+const ensureAuthenticated = require('../middleware/auth');
 
 // GET all workouts
 router.get(
@@ -62,6 +63,7 @@ router.get(
 // POST a new workout
 router.post(
     '/',
+    ensureAuthenticated,
     /* #swagger.description = 'Create a new workout'
         #swagger.parameters['body'] = {
             in: 'body',
@@ -103,8 +105,9 @@ router.post(
 // PUT update a workout by ID
 router.put(
     '/:id',
+    ensureAuthenticated,
     /* #swagger.description = 'Update a workout by ID'
-        #swagger.parameters['id'] = { 
+        #swagger.parameters['id'] = { 1
             description: 'Workout ID', 
             type: 'string', 
             example: '60c72b2f9b1e8a001c8e4f3b' 
@@ -130,6 +133,7 @@ router.put(
 // DELETE a workout by ID
 router.delete(
     '/:id',
+    ensureAuthenticated,
     /* #swagger.description = 'Delete a workout by ID'
         #swagger.parameters['id'] = { 
             description: 'Workout ID', 

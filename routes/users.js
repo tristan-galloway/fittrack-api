@@ -5,7 +5,6 @@ const ensureAuthenticated = require('../middleware/auth');
 
 router.get(
     '/',
-    ensureAuthenticated,
     /* #swagger.description = 'Get all users'
      #swagger.responses[200] = {
        description: 'List of users',
@@ -61,6 +60,7 @@ usersController.getSingle
 
 router.post(
     '/',
+    ensureAuthenticated,
     /* #swagger.description = 'Create a new user'
         #swagger.parameters['body'] = {
             in: 'body',
@@ -100,6 +100,7 @@ usersController.createUser);
 
 router.put(
     '/:id',
+    ensureAuthenticated,
     /* #swagger.description = 'Update a User by ID'
         #swagger.parameters['id'] = { 
             description: 'User ID', 
@@ -131,6 +132,7 @@ usersController.updateUser);
 
 router.delete(
     '/:id',
+    ensureAuthenticated,
     /* #swagger.description = 'Delete a User by ID'
         #swagger.parameters['id'] = { 
             description: 'User ID', 
