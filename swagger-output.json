@@ -58,7 +58,7 @@
                   },
                   "bio": {
                     "type": "string",
-                    "example": "Lifelong runner and HIIT fan"
+                    "example": "Life long runner and HIIT fan"
                   }
                 }
               },
@@ -173,6 +173,9 @@
           },
           "400": {
             "description": "Missing required field."
+          },
+          "401": {
+            "description": "Unauthorized. Please log in."
           },
           "500": {
             "description": "Internal Server Error"
@@ -318,6 +321,9 @@
           "400": {
             "description": "Invalid user ID format."
           },
+          "401": {
+            "description": "Unauthorized. Please log in."
+          },
           "404": {
             "description": "User not found"
           },
@@ -345,6 +351,9 @@
           "400": {
             "description": "Invalid user ID format."
           },
+          "401": {
+            "description": "Unauthorized. Please log in."
+          },
           "404": {
             "description": "User not found"
           },
@@ -365,30 +374,68 @@
               "items": {
                 "type": "object",
                 "properties": {
-                  "_id": { "type": "string", "example": "60c72b2f9b1e8a001c8e4f3b" },
-                  "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
-                  "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
-                  "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                  "_id": {
+                    "type": "string",
+                    "example": "60c72b2f9b1e8a001c8e4f3b"
+                  },
+                  "userId": {
+                    "type": "string",
+                    "example": "6830e84aed56c2256c29b10a"
+                  },
+                  "date": {
+                    "type": "string",
+                    "example": "2025-05-21T07:30:00Z"
+                  },
+                  "title": {
+                    "type": "string",
+                    "example": "Morning Full Body Circuit"
+                  },
                   "exercises": {
                     "type": "array",
                     "items": {
                       "type": "object",
                       "properties": {
-                        "name": { "type": "string", "example": "Push-ups" },
-                        "sets": { "type": "number", "example": 3 },
-                        "reps": { "type": "number", "example": 12 },
-                        "weight": { "type": "number", "example": 0 }
+                        "name": {
+                          "type": "string",
+                          "example": "Push-ups"
+                        },
+                        "sets": {
+                          "type": "number",
+                          "example": 3
+                        },
+                        "reps": {
+                          "type": "number",
+                          "example": 12
+                        },
+                        "weight": {
+                          "type": "number",
+                          "example": 0
+                        }
                       }
                     }
                   },
-                  "duration": { "type": "number", "example": 40 },
-                  "intensity": { "type": "string", "example": "medium" },
-                  "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+                  "duration": {
+                    "type": "number",
+                    "example": 40
+                  },
+                  "intensity": {
+                    "type": "string",
+                    "example": "medium"
+                  },
+                  "notes": {
+                    "type": "string",
+                    "example": "Felt energized today, good start to the week!"
+                  }
                 }
+              },
+              "xml": {
+                "name": "main"
               }
             }
           },
-          "500": { "description": "Internal Server Error" }
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
       },
       "post": {
@@ -402,23 +449,53 @@
             "schema": {
               "type": "object",
               "properties": {
-                "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
-                "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
-                "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                "userId": {
+                  "type": "string",
+                  "example": "6830e84aed56c2256c29b10a"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "2025-05-21T07:30:00Z"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Morning Full Body Circuit"
+                },
                 "exercises": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "name": { "type": "string", "example": "Push-ups" },
-                      "sets": { "type": "number", "example": 3 },
-                      "reps": { "type": "number", "example": 12 },
-                      "weight": { "type": "number", "example": 0 }
+                      "name": {
+                        "type": "string",
+                        "example": "Push-ups"
+                      },
+                      "sets": {
+                        "type": "number",
+                        "example": 3
+                      },
+                      "reps": {
+                        "type": "number",
+                        "example": 12
+                      },
+                      "weight": {
+                        "type": "number",
+                        "example": 0
+                      }
                     }
-                  },
-                  "duration": { "type": "number", "example": 40 },
-                  "intensity": { "type": "string", "example": "medium" },
-                  "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+                  }
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 40
+                },
+                "intensity": {
+                  "type": "string",
+                  "example": "medium"
+                },
+                "notes": {
+                  "type": "string",
+                  "example": "Felt energized today, good start to the week!"
                 }
               }
             }
@@ -430,30 +507,73 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": { "type": "string", "example": "60c72b2f9b1e8a001c8e4f3b" },
-                "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
-                "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
-                "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                "_id": {
+                  "type": "string",
+                  "example": "60c72b2f9b1e8a001c8e4f3b"
+                },
+                "userId": {
+                  "type": "string",
+                  "example": "6830e84aed56c2256c29b10a"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "2025-05-21T07:30:00Z"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Morning Full Body Circuit"
+                },
                 "exercises": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "name": { "type": "string", "example": "Push-ups" },
-                      "sets": { "type": "number", "example": 3 },
-                      "reps": { "type": "number", "example": 12 },
-                      "weight": { "type": "number", "example": 0 }
+                      "name": {
+                        "type": "string",
+                        "example": "Push-ups"
+                      },
+                      "sets": {
+                        "type": "number",
+                        "example": 3
+                      },
+                      "reps": {
+                        "type": "number",
+                        "example": 12
+                      },
+                      "weight": {
+                        "type": "number",
+                        "example": 0
+                      }
                     }
-                  },
-                  "duration": { "type": "number", "example": 40 },
-                  "intensity": { "type": "string", "example": "medium" },
-                  "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+                  }
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 40
+                },
+                "intensity": {
+                  "type": "string",
+                  "example": "medium"
+                },
+                "notes": {
+                  "type": "string",
+                  "example": "Felt energized today, good start to the week!"
                 }
+              },
+              "xml": {
+                "name": "main"
               }
             }
           },
-          "400": { "description": "Missing required field." },
-          "500": { "description": "Internal Server Error" }
+          "400": {
+            "description": "Missing required field."
+          },
+          "401": {
+            "description": "Unauthorized. Please log in."
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
       }
     },
@@ -476,31 +596,73 @@
             "schema": {
               "type": "object",
               "properties": {
-                "_id": { "type": "string", "example": "60c72b2f9b1e8a001c8e4f3b" },
-                "userId": { "type": "string", "example": "6830e84aed56c2256c29b10a" },
-                "date": { "type": "string", "example": "2025-05-21T07:30:00Z" },
-                "title": { "type": "string", "example": "Morning Full Body Circuit" },
+                "_id": {
+                  "type": "string",
+                  "example": "60c72b2f9b1e8a001c8e4f3b"
+                },
+                "userId": {
+                  "type": "string",
+                  "example": "6830e84aed56c2256c29b10a"
+                },
+                "date": {
+                  "type": "string",
+                  "example": "2025-05-21T07:30:00Z"
+                },
+                "title": {
+                  "type": "string",
+                  "example": "Morning Full Body Circuit"
+                },
                 "exercises": {
                   "type": "array",
                   "items": {
                     "type": "object",
                     "properties": {
-                      "name": { "type": "string", "example": "Push-ups" },
-                      "sets": { "type": "number", "example": 3 },
-                      "reps": { "type": "number", "example": 12 },
-                      "weight": { "type": "number", "example": 0 }
+                      "name": {
+                        "type": "string",
+                        "example": "Push-ups"
+                      },
+                      "sets": {
+                        "type": "number",
+                        "example": 3
+                      },
+                      "reps": {
+                        "type": "number",
+                        "example": 12
+                      },
+                      "weight": {
+                        "type": "number",
+                        "example": 0
+                      }
                     }
-                  },
-                  "duration": { "type": "number", "example": 40 },
-                  "intensity": { "type": "string", "example": "medium" },
-                  "notes": { "type": "string", "example": "Felt energized today, good start to the week!" }
+                  }
+                },
+                "duration": {
+                  "type": "number",
+                  "example": 40
+                },
+                "intensity": {
+                  "type": "string",
+                  "example": "medium"
+                },
+                "notes": {
+                  "type": "string",
+                  "example": "Felt energized today, good start to the week!"
                 }
+              },
+              "xml": {
+                "name": "main"
               }
             }
           },
-          "400": { "description": "Invalid workout ID format." },
-          "404": { "description": "Workout not found" },
-          "500": { "description": "Internal Server Error" }
+          "400": {
+            "description": "Invalid workout ID format."
+          },
+          "404": {
+            "description": "Workout not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
         }
       },
       "put": {
@@ -510,29 +672,13 @@
             "name": "id",
             "in": "path",
             "required": true,
-            "type": "string",
-            "description": "Workout ID",
-            "example": "60c72b2f9b1e8a001c8e4f3b"
-          },
-          {
-            "name": "body",
-            "in": "body",
-            "description": "Updated workout data",
-            "required": true,
-            "schema": {
-              "type": "object",
-              "properties": {
-                "title": { "type": "string", "example": "Updated Workout Title" },
-                "duration": { "type": "number", "example": 45 }
-              }
-            }
+            "type": "string"
           }
         ],
         "responses": {
-          "204": { "description": "Workout updated (no content)" },
-          "400": { "description": "Invalid workout ID format." },
-          "404": { "description": "Workout not found" },
-          "500": { "description": "Internal Server Error" }
+          "401": {
+            "description": "Unauthorized"
+          }
         }
       },
       "delete": {
@@ -548,10 +694,54 @@
           }
         ],
         "responses": {
-          "200": { "description": "Workout deleted successfully." },
-          "400": { "description": "Invalid workout ID format." },
-          "404": { "description": "Workout not found" },
-          "500": { "description": "Internal Server Error" }
+          "200": {
+            "description": "Workout deleted successfully."
+          },
+          "400": {
+            "description": "Invalid workout ID format."
+          },
+          "401": {
+            "description": "Unauthorized. Please log in."
+          },
+          "404": {
+            "description": "Workout not found"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "/auth/google": {
+      "get": {
+        "description": "Start Google OAuth login",
+        "responses": {
+          "302": {
+            "description": "Redirects to Google for authentication"
+          }
+        }
+      }
+    },
+    "/auth/google/callback": {
+      "get": {
+        "description": "Google OAuth callback",
+        "responses": {
+          "302": {
+            "description": "Redirects to login-success or login-failure page"
+          },
+          "401": {
+            "description": "Unauthorized. Login failed."
+          }
+        }
+      }
+    },
+    "/auth/logout": {
+      "get": {
+        "description": "Logout the current user",
+        "responses": {
+          "302": {
+            "description": "Redirects to logout-success page"
+          }
         }
       }
     }

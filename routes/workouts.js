@@ -97,6 +97,7 @@ router.post(
             }
         }
         #swagger.responses[400] = { description: 'Missing required field.' }
+        #swagger.responses[401] = { description: 'Unauthorized. Please log in.' }
         #swagger.responses[500] = { description: 'Internal Server Error' }
     */
     workoutsController.createWorkout
@@ -124,6 +125,7 @@ router.put(
         }
         #swagger.responses[204] = { description: 'Workout updated (no content)' }
         #swagger.responses[400] = { description: 'Invalid workout ID format.' }
+        #swagger.responses[401] = { description: 'Unauthorized. Please log in.' }
         #swagger.responses[404] = { description: 'Workout not found' }
         #swagger.responses[500] = { description: 'Internal Server Error' }
     */
@@ -142,6 +144,7 @@ router.delete(
         }
         #swagger.responses[200] = { description: 'Workout deleted successfully.' }
         #swagger.responses[400] = { description: 'Invalid workout ID format.' }
+        #swagger.responses[401] = { description: 'Unauthorized. Please log in.' }
         #swagger.responses[404] = { description: 'Workout not found' }
         #swagger.responses[500] = { description: 'Internal Server Error' }
     */

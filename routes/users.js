@@ -92,6 +92,7 @@ router.post(
             }
         }
         #swagger.responses[400] = { description: 'Missing required field.' }
+        #swagger.responses[401] = { description: 'Unauthorized. Please log in.' }
         #swagger.responses[500] = { description: 'Internal Server Error' }
     */ 
     
@@ -125,6 +126,7 @@ router.put(
         #swagger.responses[204] = { description: 'User updated (no content)' }
         #swagger.responses[400] = { description: 'Invalid user ID format.' }
         #swagger.responses[404] = { description: 'User not found' }
+        #swagger.responses[401] = { description: 'Unauthorized. Please log in.' }
         #swagger.responses[500] = { description: 'Internal Server Error' }
   */
 usersController.updateUser);
@@ -132,7 +134,7 @@ usersController.updateUser);
 
 router.delete(
     '/:id',
-    ensureAuthenticated,
+    ensureAuthenticated, 
     /* #swagger.description = 'Delete a User by ID'
         #swagger.parameters['id'] = { 
             description: 'User ID', 
@@ -142,6 +144,7 @@ router.delete(
         #swagger.responses[200] = { description: 'User deleted successfully.' }
         #swagger.responses[400] = { description: 'Invalid user ID format.' }
         #swagger.responses[404] = { description: 'User not found' }
+        #swagger.responses[401] = { description: 'Unauthorized. Please log in.' }
         #swagger.responses[500] = { description: 'Internal Server Error' }
     */
 usersController.deleteUser);
